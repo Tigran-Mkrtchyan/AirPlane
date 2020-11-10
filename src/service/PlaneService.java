@@ -137,13 +137,13 @@ public class PlaneService {
     }
 
     public Plane getWithMinCostPlain(Plane[] planes) {
-        Plane withMinCost = null;
-        for (int i = 0; i < planes.length; i++) {
+        Plane withMinCost = planes[0];
+        for (int i = 1; i < planes.length; i++) {
             if (withMinCost.getWeight() > planes[i].getWeight() && planes[i].isMilitary()) {
                 withMinCost = planes[i];
             }
         }
-        return withMinCost;
+        return withMinCost.isMilitary()? withMinCost: null;
     }
 
 
